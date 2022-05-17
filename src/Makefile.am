@@ -48,7 +48,7 @@ endif
 
 # if available, add the following flags
 # -mavx, -mtune=niagara2, -mcpu=ultrasparc
-AM_CFLAGS = -Wall -ansi -std=c99 -Wno-format -pedantic \
+AM_CFLAGS = -Wall -ansi -std=c99 -Wno-format-security -Wno-format  -pedantic \
 	    -g -msse4.2 $(DEFINES)
 
 AM_LDFLAGS =

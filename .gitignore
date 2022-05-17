@@ -1,0 +1,13 @@
+# Object files
+*.Po
+*.o
+
+# Generated files
+config.h
+config.log
+config.status
+Makefile
+
+# Executables
+stamp-h1
+mchashjoins

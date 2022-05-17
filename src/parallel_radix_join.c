@@ -19,6 +19,7 @@
 #include <sys/time.h>           /* gettimeofday */
 #include <stdio.h>              /* printf */
 #include <smmintrin.h>          /* simd only for 32-bit keys – SSE4.1 */
+#include <immintrin.h>          /* simd only for 32-bit keys – SSE4.1 */
 
 #include "parallel_radix_join.h"
 #include "prj_params.h"         /* constant parameters */
