@@ -10,7 +10,7 @@ Makefile
 
 # Executables
 stamp-h1
-mchashjoins
+mchashjoins*
 
 # autoconf stuff
 compile

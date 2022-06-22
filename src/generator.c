@@ -614,6 +614,7 @@ read_relation(relation_t * rel, char * filename){
     /* search for a whitespace for "key payload" format */
     int fmtspace = 0;
     int fmtcomma = 0;
+    int fmtpipe = 0;
     do{
         c = fgetc(fp);
         if(c == ' '){
@@ -622,6 +623,10 @@ read_relation(relation_t * rel, char * filename){
         }
         if(c == ','){
             fmtcomma = 1;
+            break;
+        }
+        if(c == '|'){
+            fmtpipe = 1;
             break;
         }
     } while (c != '\n');
@@ -639,13 +644,15 @@ read_relation(relation_t * rel, char * filename){
     int warn = 1;
     for(uint64_t i = 0; i < ntuples; i++){
         if(fmtspace){
-            fscanf(fp, "%d %d", &key, &payload);
+            assert(fscanf(fp, "%d %d", &key, &payload) == 2);
         }
         else if(fmtcomma){
-            fscanf(fp, "%d,%d", &key, &payload);
+            assert(fscanf(fp, "%d,%d", &key, &payload) == 2);
+        } else if(fmtpipe){
+            assert(fscanf(fp, "%d|%d", &key, &payload) == 2);
         }
         else {
-            fscanf(fp, "%d", &key);
+            assert(fscanf(fp, "%d", &key) == 1);
         }
 
         if(warn && key < 0){
