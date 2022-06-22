@@ -41,9 +41,9 @@ AC_CHECK_FUNCS([pthread_attr_setaffinity_np pthread_barrier_wait])
 # Check for conditional compilation options
 # Use 8B keys?
 AC_ARG_ENABLE(key8B,
-   [  --enable-key8B  use 8B keys and values making tuples 16B  [default=no]],
+   [  --enable-key8B  use 8B keys and values making tuples 16B  [default=yes]],
    [enable_key8B="$enableval"], 
-   [enable_key8B="no"])
+   [enable_key8B="yes"])
 
 AM_CONDITIONAL([KEY_8B], [test "$enable_key8B" = "yes"])
 
