@@ -247,6 +247,7 @@ cpu-mapping.txt
 #include "parallel_radix_join.h"  /* parallel radix joins: RJ, PRO, PRH, PRHO */
 #include "generator.h"            /* create_relation_xk */
 
+#include "constants.h"     /* DEFAULT_R_SEED, DEFAULT_R_SEED */
 #include "perf_counters.h" /* PCM_x */
 #include "affinity.h"      /* pthread_attr_setaffinity_np & sched_setaffinity */
 #include "../config.h"     /* autoconf header */
@@ -340,8 +341,8 @@ main(int argc, char ** argv)
     /* default dataset is Workload B (described in paper) */
     cmd_params.r_size   = 128000000;
     cmd_params.s_size   = 128000000;
-    cmd_params.r_seed   = 12345;
-    cmd_params.s_seed   = 54321;
+    cmd_params.r_seed   = DEFAULT_R_SEED;
+    cmd_params.s_seed   = DEFAULT_S_SEED;
     cmd_params.skew     = 0.0;
     cmd_params.verbose  = 0;
     cmd_params.perfconf = NULL;

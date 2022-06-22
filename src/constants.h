@@ -1,0 +1,7 @@
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+#define DEFAULT_R_SEED 12345
+#define DEFAULT_S_SEED 54321
+
+#endif /* CONSTANTS_H */

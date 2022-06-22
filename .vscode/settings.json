@@ -3,5 +3,6 @@
   "files.associations": {
     "smmintrin.h": "c",
     "immintrin.h": "c"
-  }
+  },
+  "C/C++ Include Guard.Comment Style": "Block"
 }

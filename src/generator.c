@@ -3,6 +3,7 @@
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE
 #endif
+#include <assert.h>             /* assert() */
 #include <sched.h>              /* CPU_ZERO, CPU_SET */
 #include <pthread.h>            /* pthread_attr_setaffinity_np */
 #include <stdio.h>              /* perror */
