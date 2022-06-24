@@ -4,7 +4,10 @@
 #define GENERATOR64_HPP
 
 #define KEY_8B
+extern "C" {
+#include "constants.h"
 #include "generator.h"
+}
 
 static_assert(sizeof(intkey_t) == 8);
 static_assert(sizeof(value_t) == 8);
