@@ -640,7 +640,7 @@ read_relation(relation_t * rel, char * filename){
     } while (c != '\n');
 
     uint64_t ntuples = rel->num_tuples;
-    intkey_t key;
+    intkey_t key = 0;
     value_t payload = 0;
     int warn = 1;
     for(uint64_t i = 0; i < ntuples; i++){
