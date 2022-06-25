@@ -13,6 +13,10 @@
 
 #define MAX_NODES 512
 
+#ifdef __cplusplus
+namespace eth_hashjoin {
+#endif // __cplusplus
+
 static int inited = 0;
 static int max_cpus;
 static int node_mapping[MAX_NODES];
@@ -134,3 +138,7 @@ get_numa_node_of_address(void * ptr)
     get_mempolicy(&numa_node, NULL, 0, ptr, MPOL_F_NODE | MPOL_F_ADDR);
     return numa_node;
 }
+
+#ifdef __cplusplus
+} // namespace eth_hashjoin
+#endif // __cplusplus

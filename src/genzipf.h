@@ -16,11 +16,19 @@
 
 #include "types.h" /* tuple_t */
 
+#ifdef __cplusplus
+namespace eth_hashjoin {
+extern "C" {
+#endif // __cplusplus
 typedef tuple_t item_t;
 
 item_t * gen_zipf (unsigned int stream_size,
                    unsigned int alphabet_size,
                    double zipf_factor,
                    item_t ** output);
+#ifdef __cplusplus
+} // extern "C"
+} // namespace eth_hashjoin
+#endif // __cplusplus
 
 #endif  /* GENZIPF_H */

@@ -12,6 +12,14 @@
 #define TYPES_H
 
 #include <stdint.h>
+#ifdef __cplusplus
+#include <span>
+#endif // __cplusplus
+
+#ifdef __cplusplus
+namespace eth_hashjoin {
+#endif // __cplusplus
+
 
 /**
  * @defgroup Types Common Types
@@ -46,6 +54,13 @@ struct tuple_t {
 struct relation_t {
   tuple_t * tuples;
   uint64_t  num_tuples;
+
+#ifdef __cplusplus
+    relation_t() : relation_t(nullptr, 0) {}
+    relation_t(tuple_t * tuples, uint64_t num_tuples) : tuples(tuples), num_tuples(num_tuples) {}
+    relation_t(const std::span<tuple_t>& span) : tuples(span.data()), num_tuples(span.size()) {}
+    operator std::span<tuple_t>() { return {tuples, num_tuples}; }
+#endif // __cplusplus
 };
 
 /** Holds the join results of a thread */
@@ -64,4 +79,7 @@ struct result_t {
 
 /** @} */
 
+#ifdef __cplusplus
+} // namespace eth_hashjoin
+#endif // __cplusplus
 #endif /* TYPES_H */

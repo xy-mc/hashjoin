@@ -20,6 +20,10 @@
 #include "lock.h"
 #include "prj_params.h"         /* RELATION_PADDING for Parallel Radix */
 
+#ifdef __cplusplus
+namespace eth_hashjoin {
+#endif // __cplusplus
+
 /* return a random number in range [0,N] */
 #define RAND_RANGE(N) ((double)rand() / ((double)RAND_MAX + 1) * (N))
 #define RAND_RANGE48(N,STATE) ((double)nrand48(STATE)/((double)RAND_MAX+1)*(N))
@@ -667,3 +671,7 @@ read_relation(relation_t * rel, char * filename){
     fclose(fp);
 
 }
+
+#ifdef __cplusplus
+} // namespace eth_hashjoin
+#endif // __cplusplus
