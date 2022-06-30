@@ -1397,10 +1397,10 @@ print_timing(uint64_t total, uint64_t build, uint64_t part,
                         - ((*start).tv_sec*1000000L+(*start).tv_usec));
     double cyclestuple = total;
     cyclestuple /= numtuples;
-    // stdout: runtime total, build, part, total time usecs, total tuples, cycles/tuple
-    fprintf(stderr, "RUNTIME TOTAL, BUILD, PART (cycles): \n");
-    fprintf(stdout, "%llu, %llu, %llu, ",
-            total, build, part);
+    // stdout: passes, radix bits, runtime total, build, part, total time usecs, total tuples, cycles/tuple
+    fprintf(stderr, "PASSES, RADIX BITS, RUNTIME TOTAL, BUILD, PART (cycles): \n");
+    fprintf(stdout, "%d, %d, %llu, %llu, %llu, ",
+            NUM_PASSES, NUM_RADIX_BITS, total, build, part);
     fprintf(stderr, "\n");
     fprintf(stderr, "TOTAL-TIME-USECS, TOTAL-TUPLES, CYCLES-PER-TUPLE: \n");
     fprintf(stdout, "%.4lf, ", diff_usec);
