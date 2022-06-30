@@ -13,6 +13,11 @@
 
 #include "types.h"
 
+#ifdef __cplusplus
+namespace eth_hashjoin {
+extern "C" {
+#endif // __cplusplus
+
 /** 
  * @defgroup DataGeneration Data Set Generation
  * @{
@@ -110,4 +115,8 @@ load_relation(relation_t * relation, char * filename, uint64_t num_tuples);
 
 /** @} */
 
+#ifdef __cplusplus
+} // extern "C"
+} // namespace eth_hashjoin
+#endif // __cplusplus
 #endif /* GENERATOR_H */

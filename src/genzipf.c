@@ -16,6 +16,11 @@
 
 #include "genzipf.h"
 
+
+#ifdef __cplusplus
+namespace eth_hashjoin {
+#endif // __cplusplus
+
 /**
  * Create an alphabet, an array of size @a size with randomly
  * permuted values 0..size-1.
@@ -156,3 +161,6 @@ gen_zipf (unsigned int stream_size,
 
     return ret;
 }
+#ifdef __cplusplus
+} // namespace eth_hashjoin
+#endif // __cplusplus

@@ -24,6 +24,11 @@
 #define CUSTOM_CPU_MAPPING "cpu-mapping.txt"
 #endif
 
+#ifdef __cplusplus
+namespace eth_hashjoin {
+extern "C" {
+#endif // __cplusplus
+
 /**
  * Returns SMT aware logical to physical CPU mapping for a given thread id.
  */
@@ -54,5 +59,10 @@ int
 get_numa_node_of_address(void * ptr);
 
 /** @} */
+
+#ifdef __cplusplus
+} // extern "C"
+} // namespace eth_hashjoin
+#endif // __cplusplus
 
 #endif /* CPU_MAPPING_H */
