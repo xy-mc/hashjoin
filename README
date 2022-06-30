@@ -6,6 +6,9 @@ EFFICIENT MAIN-MEMORY HASH JOINS ON MULTI-CORE CPUS:
     with the `Doxyfile' file in `doc' directory.  The documentation
     will then be generated in doc/html/index.html. ]
 
+   WARNING: run `enable_hugepages.sh` and `constant_frequency.sh`
+   before running your benchmarks!!!
+
 A. Introduction
 
 This package provides implementations of the main-memory hash join algorithms
