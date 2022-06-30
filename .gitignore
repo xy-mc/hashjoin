@@ -14,7 +14,6 @@ stamp-h1
 mchashjoins*
 
 # autoconf stuff
-compile
 *.cache
 
 # log files
