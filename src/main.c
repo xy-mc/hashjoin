@@ -361,12 +361,12 @@ main(int argc, char ** argv)
 #endif
     
     /* create relation R */
-    fprintf(stdout,
+    fprintf(stderr,
             "[INFO ] %s relation R with size = %.3lf MiB, #tuples = %llu : ",
             (cmd_params.loadfileS != NULL)?("Loading"):("Creating"),
             (double) sizeof(tuple_t) * cmd_params.r_size/1024.0/1024.0,
             cmd_params.r_size);
-    fflush(stdout);
+    fflush(stderr);
 
     seed_generator(cmd_params.r_seed);
 
@@ -390,15 +390,15 @@ main(int argc, char ** argv)
                                  nthreads,
                                  cmd_params.r_size);
     }
-    printf("OK \n");
+    fprintf(stderr, "OK \n");
 
     /* create relation S */
-    fprintf(stdout,
+    fprintf(stderr,
             "[INFO ] %s relation S with size = %.3lf MiB, #tuples = %lld : ",
             (cmd_params.loadfileS != NULL)?("Loading"):("Creating"),
             (double) sizeof(tuple_t) * cmd_params.s_size/1024.0/1024.0,
             cmd_params.s_size);
-    fflush(stdout);
+    fflush(stderr);
 
     seed_generator(cmd_params.s_seed);
 
@@ -429,18 +429,18 @@ main(int argc, char ** argv)
                                      cmd_params.r_size);
         }
     }
-    printf("OK \n");
+    fprintf(stderr, "OK \n");
 
 
     /* Run the selected join algorithm */
-    printf("[INFO ] Running join algorithm %s ...\n", cmd_params.algo->name);
+    fprintf(stderr, "[INFO ] Running join algorithm %s ...\n", cmd_params.algo->name);
 
     results = cmd_params.algo->joinAlgo(&relR, &relS, cmd_params.nthreads);
 
-    printf("[INFO ] Results = %llu. DONE.\n", results->totalresults);
+    fprintf(stderr, "[INFO ] Results = %llu. DONE.\n", results->totalresults);
 
 #if (defined(PERSIST_RELATIONS) && defined(JOIN_RESULT_MATERIALIZE))
-    printf("[INFO ] Persisting the join result to \"Out.tbl\" ...\n");
+    fprintf(stderr, "[INFO ] Persisting the join result to \"Out.tbl\" ...\n");
     write_result_relation(results, "Out.tbl");
 #endif
 
