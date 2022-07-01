@@ -1,6 +1,7 @@
+# EFFICIENT MAIN-MEMORY HASH JOINS ON MULTI-CORE CPUS: TUNING TO THE UNDERLYING HARDWARE
 
-EFFICIENT MAIN-MEMORY HASH JOINS ON MULTI-CORE CPUS:
-	  TUNING TO THE UNDERLYING HARDWARE
+[![C/C++ CI](https://github.com/mars-research/vldb13-eth-hashjoin/actions/workflows/build.yml/badge.svg)](https://github.com/mars-research/vldb13-eth-hashjoin/actions/workflows/build.yml)
+
 
   [ You can obtain an HTML version of this file by running doxygen
     with the `Doxyfile' file in `doc' directory.  The documentation
@@ -9,7 +10,7 @@ EFFICIENT MAIN-MEMORY HASH JOINS ON MULTI-CORE CPUS:
    WARNING: run `enable_hugepages.sh` and `constant_frequency.sh`
    before running your benchmarks!!!
 
-A. Introduction
+## A. Introduction
 
 This package provides implementations of the main-memory hash join algorithms
 described and studied in our ICDE 2013 paper. Namely, the implemented
@@ -23,7 +24,7 @@ algorithms are the following with the abbreviated names:
  - NPO_st: No Partitioning Join Optimized (single-threaded)
 
 
-B. Compilation
+## B. Compilation
 
 The package includes implementations of the algorithms and also the driver
 code to run and repeat the experimental studies described in the paper.
@@ -76,7 +77,7 @@ We have successfully compiled and run our code on different Linux
 variants; the experiments in the paper were performed on Debian and Ubuntu
 Linux systems.
 
-C. Usage and Invocation
+## C. Usage and Invocation
 
 The mchashjoins binary understands the following command line
 options: 
@@ -112,9 +113,9 @@ joins. We only count the number of matching tuples and report this. In order
 to materialize results, one needs to copy results to a result buffer in the
 corresponding locations of the source code.
 
-D. Configuration Parameters
+## D. Configuration Parameters
 
-D.1. Logical to Pyhsical CPU Mapping
+### D.1. Logical to Pyhsical CPU Mapping
 
 If running on a machine with multiple CPU sockets and/or SMT feature enabled,
 then it is necessary to identify correct mappings of CPUs on which threads
@@ -134,7 +135,7 @@ hand. If it is absent, threads will be assigned round-robin. This CPU mapping
 utility is also integrated into the Wisconsin implementation (found in 
 `wisconsin-src') and same settings are also valid there.
 
-D.2. Performance Monitoring
+### D.2. Performance Monitoring
 
 For performance monitoring a config file can be provided on the command line
 with --perfconf which specifies which hardware counters to monitor. For 
@@ -163,12 +164,12 @@ determines number of partitioning passes. Our implementations support between
 1 and 2 passes and they can be configured using these parameters to find the
 ideal performance on a given machine.
 
-E. Generating Data Sets of Our Experiments
+## E. Generating Data Sets of Our Experiments
 
 Here we briefly describe how to generate data sets used in our experiments 
 with the command line parameters above.
 
-E.1. Workload B 
+### E.1. Workload B 
 
 In this data set, the inner relation R and outer relation S have 128*10^6 
 tuples each. The tuples are 8 bytes long, consisting of 4-byte (or 32-bit) 
@@ -182,7 +183,7 @@ mchashjoins:
 
 note: Configure must have run without --enable-key8B.
 
-E.2. Workload A
+### E.2. Workload A
 
 This data set reflects the case where the join is performed between the 
 primary key of the inner relation R and the foreign key of the outer relation
@@ -195,7 +196,7 @@ up to 16 bytes per tuple. To generate this data set do the following:
      $ make
      $ ./mchashjoins [other options] --r-size=16777216 --s-size=268435456 
 
-E.3. Introducing Skew in Data Sets
+### E.3. Introducing Skew in Data Sets
 
 Skew can be introduced to the relation S as in our experiments by appending 
 the following parameter to the command line, which is basically a Zipf 
@@ -203,7 +204,7 @@ distribution skewness parameter:
 
      $ ./mchashjoins [other options] --skew=1.05
 
-F. Wisconsin Implementation
+## F. Wisconsin Implementation
 
 A slightly modified version of the original implementation provided by 
 Blanas et al. from University of Wisconsin is provided under `wisconsin-src'
