@@ -1,6 +1,6 @@
 # EFFICIENT MAIN-MEMORY HASH JOINS ON MULTI-CORE CPUS: TUNING TO THE UNDERLYING HARDWARE
 
-[![C/C++ CI](https://github.com/mars-research/vldb13-eth-hashjoin/actions/workflows/build.yml/badge.svg)](https://github.com/mars-research/vldb13-eth-hashjoin/actions/workflows/build.yml)
+[![build](https://github.com/mars-research/vldb13-eth-hashjoin/actions/workflows/build.yml/badge.svg)](https://github.com/mars-research/vldb13-eth-hashjoin/actions/workflows/build.yml)
 
 
   [ You can obtain an HTML version of this file by running doxygen
