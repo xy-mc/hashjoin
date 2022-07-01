@@ -9,6 +9,10 @@ config.status
 Makefile
 *.d
 
+# Generted docs
+html/
+latex/
+
 # Executables
 stamp-h1
 mchashjoins*

@@ -26,10 +26,11 @@ jobs:
       - name: Build docs
         uses: mattnotmitt/doxygen-action@v1.9.4
         with:
-            doxyfile-path: 'doc/Doxygen'
+          working-directory: 'doc/'
+            doxyfile-path: 'Doxyfile'
 
       - name: Deploy docs
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./doc
+          publish_dir: ./doc/html

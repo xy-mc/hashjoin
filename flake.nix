@@ -38,6 +38,7 @@
         buildInputs = with pkgs; [
           gdb
           clang-tools
+          doxygen
         ];  
         NIX_CFLAGS_COMPILE = "-march=native";
       };
