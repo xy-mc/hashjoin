@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Build
 
 on:
   push:
@@ -24,4 +24,4 @@ jobs:
     - name: make
       run: nix develop .#build --command make -j
     - name: run
-      run: nix develop .#build --command ./src/mchashjoins -n ${{ steps.cpu-cores.outputs.count }}
+      run: nix develop .#build --command ./src/mchashjoins -n ${{ steps.cpu-cores.outputs.count }} --r_size 128000 --r_size 128000
