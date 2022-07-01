@@ -4,5 +4,7 @@
     "smmintrin.h": "c",
     "immintrin.h": "c"
   },
-  "C/C++ Include Guard.Comment Style": "Block"
+  "C/C++ Include Guard.Comment Style": "Block",
+  "C/C++ Include Guard.Auto Update Include Guard": false,
+  "nixEnvSelector.nixFile": "${workspaceRoot}/shell.nix"
 }
