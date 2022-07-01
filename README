@@ -11,6 +11,8 @@ EFFICIENT MAIN-MEMORY HASH JOINS ON MULTI-CORE CPUS:
 
 A. Introduction
 
+Link to the <a href="https://github.com/mars-research/vldb13-eth-hashjoin">source code</a>.
+
 This package provides implementations of the main-memory hash join algorithms
 described and studied in our ICDE 2013 paper. Namely, the implemented
 algorithms are the following with the abbreviated names:
