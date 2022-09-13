@@ -4,6 +4,8 @@
 
 [![Docs](https://github.com/mars-research/vldb13-eth-hashjoin/actions/workflows/docs.yml/badge.svg)](https://github.com/mars-research/vldb13-eth-hashjoin/actions/workflows/docs.yml)
 
+Change the join/hardware parameters at https://github.com/mars-research/vldb13-eth-hashjoin/blob/master/src/prj_params.h
+
 [Documentation](http://mars-research.github.io/vldb13-eth-hashjoin)
 
 A fork of the ETH Zurich's VLDB 13 hashjoin obtained from https://systems.ethz.ch/research/data-processing-on-modern-hardware/projects/parallel-and-distributed-joins.html.
