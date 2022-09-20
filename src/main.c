@@ -434,6 +434,7 @@ main(int argc, char ** argv)
 
     /* Run the selected join algorithm */
     fprintf(stderr, "[INFO ] Running join algorithm %s ...\n", cmd_params.algo->name);
+    fprintf(stderr, "[INFO ] NUM_PASSES %d | NUM_RADIX_BITS %d\n", NUM_PASSES, NUM_RADIX_BITS);
 
     results = cmd_params.algo->joinAlgo(&relR, &relS, cmd_params.nthreads);
 
