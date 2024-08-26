@@ -41,30 +41,41 @@ inline void unlock(Lock_t * _l) {
     *_l = 0;
 }
 
-inline int tas(volatile char * lock)
+inline int tas(volatile char *lock)
 {
-// `register` is deprecated in c++17
+    // For C++17 and later, `register` is deprecated. Use a regular variable.
 #if __cplusplus >= 201703L
     char res = 1;
 #else
     register char res = 1;
 #endif // __cplusplus >= 201703L
-#if defined(__i386__) || defined(__x86_64__)
+
+#if defined(__aarch64__)
+    unsigned int tmp;
+    __asm__ __volatile__ (
+                          "ldaxrb %w0, [%2]\n"    // Load the value from memory into tmp (byte)
+                          "eor %w0, %w0, #1\n"    // Compute the new value (exclusive OR with 1)
+                          "stlxrb %w1, %w0, [%2]\n" // Store the new value into memory with exclusive store
+                          : "=&r"(res), "=&r"(tmp)
+                          : "r"(lock)
+                          : "memory", "cc");
+
+#elif defined(__i386__) || defined(__x86_64__)
     __asm__ __volatile__ (
                           "lock xchgb %0, %1\n"
                           : "+q"(res), "+m"(*lock)
                           :
                           : "memory", "cc");
-#elif defined(__sparc__)
-    __asm__ __volatile__ (
-                          "ldstub [%2], %0"
-                          : "=r"(res), "+m"(*lock)
-                          : "r"(lock)
-                          : "memory");
+
 #else
 #error TAS not defined for this architecture.
 #endif
+
     return res;
 }
+
+
+
+
 
 #endif /* LOCK_H */

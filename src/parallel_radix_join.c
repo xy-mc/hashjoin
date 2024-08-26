@@ -18,7 +18,7 @@
 #include <stdlib.h>             /* malloc, posix_memalign */
 #include <sys/time.h>           /* gettimeofday */
 #include <stdio.h>              /* printf */
-#include <smmintrin.h>          /* simd only for 32-bit keys – SSE4.1 */
+// #include <smmintrin.h>          /* simd only for 32-bit keys – SSE4.1 */
 #include <immintrin.h>          /* simd only for 32-bit keys – SSE4.1 */
 
 #include "parallel_radix_join.h"

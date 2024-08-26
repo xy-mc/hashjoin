@@ -19,13 +19,16 @@
 #include <stdio.h>              /* printf */
 #include <stdlib.h>             /* memalign */
 #include <sys/time.h>           /* gettimeofday */
-
+#include <stdbool.h>
 #include "no_partitioning_join.h"
 #include "npj_params.h"         /* constant parameters */
 #include "npj_types.h"          /* bucket_t, hashtable_t, bucket_buffer_t */
 #include "rdtsc.h"              /* startTimer, stopTimer */
 #include "lock.h"               /* lock, unlock */
 #include "cpu_mapping.h"        /* get_cpu_id */
+
+#include "../../gem5_dda/include/gem5/m5ops.h"
+
 #ifdef PERF_COUNTERS
 #include "perf_counters.h"      /* PCM_x */
 #endif
@@ -205,7 +208,7 @@ allocate_hashtable(hashtable_t ** ppht, uint32_t nbuckets)
 
     memset(ht->buckets, 0, ht->num_buckets * sizeof(bucket_t));
     ht->skip_bits = 0; /* the default for modulo hash */
-    ht->hash_mask = (ht->num_buckets - 1) << ht->skip_bits;
+    ht->hash_mask = (ht->num_buckets - 1) >> 4 ;
     *ppht = ht;
 }
 
@@ -237,7 +240,7 @@ build_hashtable_st(hashtable_t *ht, relation_t *rel)
     for(i=0; i < rel->num_tuples; i++){
         tuple_t * dest;
         bucket_t * curr, * nxt;
-        int32_t idx = HASH(rel->tuples[i].key, hashmask, skipbits);
+        int64_t idx = HASH(rel->tuples[i].key, hashmask, skipbits);
 
         /* copy the tuple to appropriate hash bucket */
         /* if full, follow nxt pointer to find correct place */
@@ -284,45 +287,28 @@ probe_hashtable(hashtable_t *ht, relation_t *rel, void * output)
 
     const uint32_t hashmask = ht->hash_mask;
     const uint32_t skipbits = ht->skip_bits;
-#ifdef PREFETCH_NPJ    
-    size_t prefetch_index = PREFETCH_DISTANCE;
-#endif
-    
     matches = 0;
-
-#ifdef JOIN_RESULT_MATERIALIZE
-    chainedtuplebuffer_t * chainedbuf = (chainedtuplebuffer_t *) output;
-#endif
-
+    int64_t *idx= (int64_t *)malloc(rel->num_tuples * sizeof(int64_t));
+    for (i = 0; i < rel->num_tuples; i++)
+        idx[i] = HASH(rel->tuples[i].key, hashmask, skipbits);
     for (i = 0; i < rel->num_tuples; i++)
     {
-#ifdef PREFETCH_NPJ        
-        if (prefetch_index < rel->num_tuples) {
-			intkey_t idx_prefetch = HASH(rel->tuples[prefetch_index++].key,
-                                         hashmask, skipbits);
-			__builtin_prefetch(ht->buckets + idx_prefetch, 0, 1);
-        }
-#endif
-        
-        intkey_t idx = HASH(rel->tuples[i].key, hashmask, skipbits);
-        bucket_t * b = ht->buckets+idx;
-
+        // intkey_t idx = HASH(rel->tuples[i].key, hashmask, skipbits);
+        bucket_t * b = ht->buckets+idx[i];
+        printf("idx:%d",idx[i]);
+        // bool flag = false;
         do {
             for(j = 0; j < b->count; j++) {
-                if(rel->tuples[i].key == b->tuples[j].key){
+                if(rel->tuples[i].key == b->tuples[j].key)
+                {
                     matches ++;
-
- #ifdef JOIN_RESULT_MATERIALIZE
-                    /* copy to the result buffer */
-                    tuple_t * joinres = cb_next_writepos(chainedbuf);
-                    joinres->key      = b->tuples[j].payload;   /* R-rid */
-                    joinres->payload  = rel->tuples[i].payload; /* S-rid */
-#endif
-                   
+                    // flag= true;
+                    // break;         
                 }
             }
 
             b = b->next;/* follow overflow pointer */
+            
         } while(b);
     }
 
@@ -390,9 +376,10 @@ NPO_st(relation_t *relR, relation_t *relS, int nthreads)
 #else
     void * chainedbuf = NULL;
 #endif
-
+    m5_checkpoint(0,0);
+    m5_reset_stats(0,0);
     result = probe_hashtable(ht, relS, chainedbuf);
-
+    m5_dump_stats(0,0);
 #ifdef JOIN_RESULT_MATERIALIZE
     threadresult_t * thrres = &(joinresult->resultlist[0]);/* single-thread */
     thrres->nresults = result;

@@ -2,18 +2,18 @@ AUTOMAKE_OPTIONS = foreign
 
 # Enable PERSIST_RELATIONS and JOIN_RESULT_MATERIALIZE to write tables to file.
 DEFINES = #-DPERSIST_RELATIONS -DJOIN_RESULT_MATERIALIZE
-MYLDFLAGS = -lnuma
+MYLDFLAGS = 
 MISC = 
 
-if KEY_8B
-DEFINES += -DKEY_8B
-endif
+#if KEY_8B
+#DEFINES += -DKEY_8B
+#endif
 
 if PERF_COUNTERS
 DEFINES += -DPERF_COUNTERS
 MYLDFLAGS += -lperf
-MISC += -I../lib/intel-pcm-1.7/ -L../lib/intel-pcm-1.7/lib/
-LIBS += -lperf
+MISC += -I../lib/intel-pcm-1.7/ -L../lib/intel-pcm-1.7/lib/ 
+LIBS += -lperf 
 endif
 
 if DEBUG
@@ -49,21 +49,20 @@ endif
 # if available, add the following flags
 # -mavx, -mtune=niagara2, -mcpu=ultrasparc
 AM_CFLAGS = -Wall -ansi -std=c99 -Wno-format-security -Wno-format  -pedantic \
-	    -g -msse4.2 $(DEFINES)
+	    -g $(DEFINES)
 
-AM_LDFLAGS =
+AM_LDFLAGS = 
 CFLAGS = -O3
 
 bin_PROGRAMS = mchashjoins
 mchashjoins_SOURCES =  	npj_params.h prj_params.h types.h npj_types.h 	\
 			no_partitioning_join.h no_partitioning_join.c 	\
-			parallel_radix_join.h parallel_radix_join.c   	\
 			perf_counters.h perf_counters.c			\
 			cpu_mapping.h cpu_mapping.c 			\
 			genzipf.h genzipf.c generator.h generator.c 	\
-			lock.h rdtsc.h task_queue.h barrier.h affinity.h\
+			rdtsc.h task_queue.h barrier.h affinity.h\
 			tuple_buffer.h					\
 			main.c
 
-mchashjoins_LDFLAGS = $(AM_LDFLAGS) $(MYLDFLAGS) -pthread
+mchashjoins_LDFLAGS = $(AM_LDFLAGS) $(MYLDFLAGS) -pthread -static
 mchashjoins_CFLAGS  = $(AM_CFLAGS) $(MISC)

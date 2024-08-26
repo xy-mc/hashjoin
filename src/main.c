@@ -242,7 +242,7 @@ cpu-mapping.txt
 #include <stdlib.h>             /* exit */
 #include <string.h>             /* strcmp */
 #include <limits.h>             /* INT_MAX */
-
+#include "prj_params.h"
 #include "no_partitioning_join.h" /* no partitioning joins: NPO, NPO_st */
 #include "parallel_radix_join.h"  /* parallel radix joins: RJ, PRO, PRH, PRHO */
 #include "generator.h"            /* create_relation_xk */
@@ -298,11 +298,11 @@ extern int nthreads;      /* defined in generator.c */
 /** all available algorithms */
 static struct algo_t algos [] = 
   {
-      {"PRO", PRO},
-      {"RJ", RJ},
-      {"PRH", PRH},
-      {"PRHO", PRHO},
-      {"NPO", NPO},
+    //   {"PRO", PRO},
+    //   {"RJ", RJ},
+    //   {"PRH", PRH},
+    //   {"PRHO", PRHO},
+    //   {"NPO", NPO},
       {"NPO_st", NPO_st}, /* NPO single threaded */
       {{0}, 0}
   };

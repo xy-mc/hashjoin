@@ -135,7 +135,7 @@ int
 get_numa_node_of_address(void * ptr)
 {
     int numa_node = -1;
-    get_mempolicy(&numa_node, NULL, 0, ptr, MPOL_F_NODE | MPOL_F_ADDR);
+    // get_mempolicy(&numa_node, NULL, 0, ptr, MPOL_F_NODE | MPOL_F_ADDR);
     return numa_node;
 }
 

@@ -2,7 +2,10 @@
   "makefile.extensionOutputFolder": "./.vscode",
   "files.associations": {
     "smmintrin.h": "c",
-    "immintrin.h": "c"
+    "immintrin.h": "c",
+    "*.tcc": "c",
+    "perf_counters.h": "c",
+    "time.h": "c"
   },
   "C/C++ Include Guard.Comment Style": "Block",
   "C/C++ Include Guard.Auto Update Include Guard": false,
