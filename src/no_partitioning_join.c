@@ -15,6 +15,7 @@
 #endif
 #include <sched.h>              /* CPU_ZERO, CPU_SET */
 #include <pthread.h>            /* pthread_* */
+// #include <vector> 
 #include <string.h>             /* memset */
 #include <stdio.h>              /* printf */
 #include <stdlib.h>             /* memalign */
@@ -282,20 +283,33 @@ build_hashtable_st(hashtable_t *ht, relation_t *rel)
 int64_t 
 probe_hashtable(hashtable_t *ht, relation_t *rel, void * output)
 {
-    uint32_t i, j;
+    int64_t i, j;
     int64_t matches;
 
-    const uint32_t hashmask = ht->hash_mask;
-    const uint32_t skipbits = ht->skip_bits;
+    const int64_t hashmask = ht->hash_mask;
+    const int64_t skipbits = ht->skip_bits;
     matches = 0;
+    // int64_t visited[100010]={0};
+    // int64_t index[100010];
+    // int64_t cnt=0;
     int64_t *idx= (int64_t *)malloc(rel->num_tuples * sizeof(int64_t));
     for (i = 0; i < rel->num_tuples; i++)
+    {
         idx[i] = HASH(rel->tuples[i].key, hashmask, skipbits);
+        // if(!visited[idx[i]])
+        // {
+        //     visited[idx[i]]=1;
+        //     index[cnt++]=idx[i];
+        // }
+    }
+    m5_checkpoint(0,0);
+    m5_reset_stats(0,0);
     for (i = 0; i < rel->num_tuples; i++)
+    // for (i = 0; i < cnt; i++)
     {
         // intkey_t idx = HASH(rel->tuples[i].key, hashmask, skipbits);
         bucket_t * b = ht->buckets+idx[i];
-        printf("idx:%d",idx[i]);
+        // printf("idx:%d",idx[i]);
         // bool flag = false;
         do {
             for(j = 0; j < b->count; j++) {
@@ -308,10 +322,10 @@ probe_hashtable(hashtable_t *ht, relation_t *rel, void * output)
             }
 
             b = b->next;/* follow overflow pointer */
-            
+
         } while(b);
     }
-
+    m5_dump_stats(0,0);
     return matches;
 }
 
@@ -376,10 +390,10 @@ NPO_st(relation_t *relR, relation_t *relS, int nthreads)
 #else
     void * chainedbuf = NULL;
 #endif
-    m5_checkpoint(0,0);
-    m5_reset_stats(0,0);
+    // m5_checkpoint(0,0);
+    // m5_reset_stats(0,0);
     result = probe_hashtable(ht, relS, chainedbuf);
-    m5_dump_stats(0,0);
+    // m5_dump_stats(0,0);
 #ifdef JOIN_RESULT_MATERIALIZE
     threadresult_t * thrres = &(joinresult->resultlist[0]);/* single-thread */
     thrres->nresults = result;

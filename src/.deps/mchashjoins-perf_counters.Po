@@ -1,0 +1,4 @@
+mchashjoins-perf_counters.o: perf_counters.c \
+ /usr/aarch64-linux-gnu/include/stdc-predef.h perf_counters.h
+/usr/aarch64-linux-gnu/include/stdc-predef.h:
+perf_counters.h:
