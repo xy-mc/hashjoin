@@ -44,5 +44,7 @@ NPO(relation_t *relR, relation_t *relS, int nthreads);
 result_t *
 NPO_st(relation_t *relR, relation_t *relS, int nthreads);
 
+result_t *
+Group_by(relation_t *relR, relation_t *relS, int nthreads);
 
 #endif /* NO_PARTITIONING_JOIN_H */

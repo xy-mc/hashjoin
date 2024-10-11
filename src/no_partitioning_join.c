@@ -184,7 +184,7 @@ free_bucket_buffer(bucket_buffer_t * buf)
  * @param ht pointer to a hashtable_t pointer
  */
 void 
-allocate_hashtable(hashtable_t ** ppht, uint32_t nbuckets)
+allocate_hashtable(hashtable_t ** ppht, uint32_t nbuckets, int list_p)
 {
     hashtable_t * ht;
 
@@ -209,7 +209,7 @@ allocate_hashtable(hashtable_t ** ppht, uint32_t nbuckets)
 
     memset(ht->buckets, 0, ht->num_buckets * sizeof(bucket_t));
     ht->skip_bits = 0; /* the default for modulo hash */
-    ht->hash_mask = (ht->num_buckets - 1) >> 4 ;
+    ht->hash_mask = (ht->num_buckets - 1) >> list_p ;
     *ppht = ht;
 }
 
@@ -270,6 +270,88 @@ build_hashtable_st(hashtable_t *ht, relation_t *rel)
     }
 }
 
+int64_t 
+group_by_hashtable(hashtable_t *ht, relation_t *rel,void *output) 
+{
+    int64_t i, j;
+    int64_t group_count = 0; // 记录分组总数
+
+    const int64_t hashmask = ht->hash_mask;
+    const int64_t skipbits = ht->skip_bits;
+
+    // 用于记录每个key对应的哈希桶索引
+    int64_t *idx = (int64_t *)malloc(rel->num_tuples * sizeof(int64_t));
+
+    // 动态分配内存，存储分组后的结果
+    // *grouped_list = (group_node *)malloc(rel->num_tuples * sizeof(group_node));
+    // memset(*grouped_list, 0, rel->num_tuples * sizeof(group_node));
+
+    // Step 1: 哈希每个key，并记录桶的索引
+    for (i = 0; i < rel->num_tuples; i++) {
+        idx[i] = HASH(rel->tuples[i].key, hashmask, skipbits);
+        // printf("%ld\n",idx[i]);
+    }
+
+    // 统计开始
+    // m5_checkpoint(0, 0);
+    // m5_reset_stats(0, 0);
+
+    // Step 2: 遍历relation的每个tuple，按key进行分组计数
+    for (i = 0; i < rel->num_tuples; i++) {
+        // int t=0;
+        tuple_t * dest;
+        bucket_t * curr, * nxt;
+        bucket_t *b = ht->buckets + idx[i]; // 获取对应桶
+        bool flag = false;
+        do {
+            for(j = 0; j < b->count; j++) {
+                if(rel->tuples[i].key == b->tuples[j].key)
+                {
+                    b->tuples[j].payload++;
+                    flag= true;
+                    break;         
+                }
+            }
+            if(flag)
+                break;
+            b = b->next;
+            // t++;/* follow overflow pointer */
+        } while(b);
+        // printf("%d\n",t);
+        if(!flag)
+        {
+            curr = ht->buckets + idx[i];
+            nxt  = curr->next;
+            group_count++;
+            if(curr->count == BUCKET_SIZE) {
+            if(!nxt || nxt->count == BUCKET_SIZE) {
+                bucket_t * g;
+                g = (bucket_t*) calloc(1, sizeof(bucket_t));
+                curr->next = g;
+                g->next = nxt;
+                g->count = 1;
+                dest = g->tuples;
+            }
+            else {
+                dest = nxt->tuples + nxt->count;
+                nxt->count ++;
+            }
+            }
+            else {
+                dest = curr->tuples + curr->count;
+                curr->count ++;
+            }
+            *dest = rel->tuples[i];
+            dest->payload=1;
+        }
+    }
+
+    // 统计结束
+    // m5_dump_stats(0, 0);
+    // printf("%ld\n",group_count);
+    return group_count; // 返回总分组数
+}
+
 /** 
  * Probes the hashtable for the given outer relation, returns num results. 
  * This probing method is used for both single and multi-threaded version.
@@ -302,7 +384,7 @@ probe_hashtable(hashtable_t *ht, relation_t *rel, void * output)
         //     index[cnt++]=idx[i];
         // }
     }
-    m5_checkpoint(0,0);
+    // m5_checkpoint(0,0);
     m5_reset_stats(0,0);
     for (i = 0; i < rel->num_tuples; i++)
     // for (i = 0; i < cnt; i++)
@@ -310,19 +392,19 @@ probe_hashtable(hashtable_t *ht, relation_t *rel, void * output)
         // intkey_t idx = HASH(rel->tuples[i].key, hashmask, skipbits);
         bucket_t * b = ht->buckets+idx[i];
         // printf("idx:%d",idx[i]);
-        // bool flag = false;
+        bool flag = false;
         do {
             for(j = 0; j < b->count; j++) {
                 if(rel->tuples[i].key == b->tuples[j].key)
                 {
                     matches ++;
-                    // flag= true;
-                    // break;         
+                    flag= true;
+                    break;         
                 }
             }
-
+            if(flag)
+                break;
             b = b->next;/* follow overflow pointer */
-
         } while(b);
     }
     m5_dump_stats(0,0);
@@ -365,7 +447,7 @@ NPO_st(relation_t *relR, relation_t *relS, int nthreads)
     uint64_t timer1, timer2, timer3;
 #endif
     uint32_t nbuckets = (relR->num_tuples / BUCKET_SIZE);
-    allocate_hashtable(&ht, nbuckets);
+    allocate_hashtable(&ht, nbuckets, 4);
 
     joinresult = (result_t *) malloc(sizeof(result_t));
 #ifdef JOIN_RESULT_MATERIALIZE
@@ -392,6 +474,7 @@ NPO_st(relation_t *relR, relation_t *relS, int nthreads)
 #endif
     // m5_checkpoint(0,0);
     // m5_reset_stats(0,0);
+    // result = probe_hashtable(ht, relS, chainedbuf);
     result = probe_hashtable(ht, relS, chainedbuf);
     // m5_dump_stats(0,0);
 #ifdef JOIN_RESULT_MATERIALIZE
@@ -416,6 +499,27 @@ NPO_st(relation_t *relR, relation_t *relS, int nthreads)
     return joinresult;
 }
 
+result_t *
+Group_by(relation_t *relR, relation_t *relS, int nthreads)
+{
+    hashtable_t * ht;
+    int64_t result = 0;
+    result_t * joinresult;
+
+    uint32_t nbuckets = (relR->num_tuples / BUCKET_SIZE);
+    allocate_hashtable(&ht, nbuckets, 4);
+
+    joinresult = (result_t *) malloc(sizeof(result_t));
+    void * chainedbuf = NULL;
+    result=group_by_hashtable(ht, relR, chainedbuf);
+
+    destroy_hashtable(ht);
+
+    joinresult->totalresults = result;
+    joinresult->nthreads     = 1;
+
+    return joinresult;
+}
 /** 
  * Multi-thread hashtable build method, ht is pre-allocated.
  * Writes to buckets are synchronized via latches.
@@ -611,7 +715,7 @@ NPO(relation_t *relR, relation_t *relS, int nthreads)
 #endif
 
     uint32_t nbuckets = (relR->num_tuples / BUCKET_SIZE);
-    allocate_hashtable(&ht, nbuckets);
+    allocate_hashtable(&ht, nbuckets, 4);
 
     numR = relR->num_tuples;
     numS = relS->num_tuples;

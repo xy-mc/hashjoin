@@ -130,9 +130,11 @@ void
 random_unique_gen(relation_t *rel) 
 {
     uint64_t i;
-
+    int count_gpb=2;
+    srand(time(NULL));
     for (i = 0; i < rel->num_tuples; i++) {
-        rel->tuples[i].key = (i+1);
+        rel->tuples[i].key = rand()%(rel->num_tuples/count_gpb);
+        // printf("%ld\n",rel->tuples[i].key);
         rel->tuples[i].payload = i;
     }
 

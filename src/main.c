@@ -281,6 +281,7 @@ struct param_t {
     int verbose;
     int fullrange_keys;  /* keys covers full int range? */
     int basic_numa;/* alloc input chunks thread local? */
+    int group_keys;
     char * perfconf;
     char * perfout;
     /** if the relations are load from file */
@@ -304,6 +305,7 @@ static struct algo_t algos [] =
     //   {"PRHO", PRHO},
     //   {"NPO", NPO},
       {"NPO_st", NPO_st}, /* NPO single threaded */
+      {"Group_by",Group_by},
       {{0}, 0}
   };
 
@@ -337,7 +339,7 @@ main(int argc, char ** argv)
 
     /* Default values if not specified on command line */
     cmd_params.algo     = &algos[0]; /* PRO */
-    cmd_params.nthreads = 2;
+    cmd_params.nthreads = 1;
     /* default dataset is Workload B (described in paper) */
     cmd_params.r_size   = 128000000;
     cmd_params.s_size   = 128000000;
@@ -349,6 +351,7 @@ main(int argc, char ** argv)
     cmd_params.perfout  = NULL;
     cmd_params.nonunique_keys   = 0;
     cmd_params.fullrange_keys   = 0;
+    cmd_params.group_keys   =0;
     cmd_params.basic_numa = 0;
     cmd_params.loadfileR = NULL;
     cmd_params.loadfileS = NULL;
@@ -384,8 +387,12 @@ main(int argc, char ** argv)
     else if(cmd_params.nonunique_keys) {
         create_relation_nonunique(&relR, cmd_params.r_size, cmd_params.r_size);
     }
+    else if(cmd_params.group_keys)
+    {
+        create_relation_pk(&relR, cmd_params.r_size);
+    }
     else {
-        //create_relation_pk(&relR, cmd_params.r_size);
+        // create_relation_pk(&relR, cmd_params.r_size);
         parallel_create_relation(&relR, cmd_params.r_size,
                                  nthreads,
                                  cmd_params.r_size);
@@ -514,7 +521,7 @@ parse_args(int argc, char ** argv, param_t * cmd_params)
 {
 
     int c, i, found;
-    /* Flag set by ‘--verbose’. */
+    /* 由‘--verbose’设置的标志位 */
     static int verbose_flag;
     static int nonunique_flag;
     static int fullrange_flag;
@@ -523,16 +530,16 @@ parse_args(int argc, char ** argv, param_t * cmd_params)
     while(1) {
         static struct option long_options[] =
             {
-                /* These options set a flag. */
+                /* 这些选项设置标志位 */
                 {"verbose",    no_argument,    &verbose_flag,   1},
                 {"brief",      no_argument,    &verbose_flag,   0},
                 {"non-unique", no_argument,    &nonunique_flag, 1},
                 {"full-range", no_argument,    &fullrange_flag, 1},
                 {"basic-numa", no_argument,    &basic_numa, 1},
+                {"group_keys", required_argument, 0, 'g'},  // 新增 group_keys 选项
                 {"help",       no_argument,    0, 'h'},
                 {"version",    no_argument,    0, 'v'},
-                /* These options don't set a flag.
-                   We distinguish them by their indices. */
+                /* 这些选项不设置标志位, 区分它们通过索引 */
                 {"algo",    required_argument, 0, 'a'},
                 {"nthreads",required_argument, 0, 'n'},
                 {"perfconf",required_argument, 0, 'p'},
@@ -546,19 +553,19 @@ parse_args(int argc, char ** argv, param_t * cmd_params)
                 {"s-file",  required_argument, 0, 'S'},
                 {0, 0, 0, 0}
             };
-        /* getopt_long stores the option index here. */
+        /* getopt_long 存储选项索引 */
         int option_index = 0;
      
-        c = getopt_long (argc, argv, "a:n:p:r:s:o:x:y:z:R:S:hv",
+        c = getopt_long(argc, argv, "a:n:p:r:s:o:x:y:z:R:S:g:hv",  // 加入 'g' 选项
                          long_options, &option_index);
      
-        /* Detect the end of the options. */
+        /* 检测选项是否结束 */
         if (c == -1)
             break;
         switch (c)
         {
           case 0:
-              /* If this option set a flag, do nothing else now. */
+              /* 如果该选项设置了标志位，则此时不需要执行其他操作 */
               if (long_options[option_index].flag != 0)
                   break;
               printf ("option %s", long_options[option_index].name);
@@ -579,16 +586,19 @@ parse_args(int argc, char ** argv, param_t * cmd_params)
               }
               
               if(found == 0) {
-                  printf("[ERROR] Join algorithm named `%s' does not exist!\n",
-                         optarg);
+                  printf("[ERROR] Join algorithm named '%s' does not exist!\n", optarg);
                   print_help(argv[0]);
                   exit(EXIT_SUCCESS);
               }
               break;
 
+          case 'g':  // 新增对 group_keys 选项的处理
+              cmd_params->group_keys = atoi(optarg);
+              break;
+
           case 'h':
           case '?':
-              /* getopt_long already printed an error message. */
+              /* getopt_long 已经打印了错误信息 */
               print_help(argv[0]);
               exit(EXIT_SUCCESS);
               break;
@@ -643,19 +653,17 @@ parse_args(int argc, char ** argv, param_t * cmd_params)
         }
     }
      
-    /* if (verbose_flag) */
-    /*     printf ("verbose flag is set \n"); */
-
     cmd_params->nonunique_keys = nonunique_flag;
     cmd_params->verbose        = verbose_flag;     
     cmd_params->fullrange_keys = fullrange_flag;
     cmd_params->basic_numa     = basic_numa;
 
-    /* Print any remaining command line arguments (not options). */
+    /* 打印剩余的命令行参数（非选项参数） */
     if (optind < argc) {
-        printf ("non-option arguments: ");
+        printf("非选项参数: ");
         while (optind < argc)
-            printf ("%s ", argv[optind++]);
-        printf ("\n");
+            printf("%s ", argv[optind++]);
+        printf("\n");
     }
 }
+

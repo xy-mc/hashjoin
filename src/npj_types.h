@@ -20,7 +20,7 @@
 typedef struct bucket_t        bucket_t;
 typedef struct hashtable_t     hashtable_t;
 typedef struct bucket_buffer_t bucket_buffer_t;
-
+typedef struct group_node group_node;
 #if PADDED_BUCKET==0
 /** 
  * Normal hashtable buckets.
@@ -64,6 +64,10 @@ struct bucket_buffer_t {
     bucket_t buf[OVERFLOW_BUF_SIZE];
 };
 
+struct group_node {
+    int64_t key;
+    int64_t count;
+};
 /** @} */
 
 #endif /* NPO_TYPES_H */

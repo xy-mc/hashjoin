@@ -5,7 +5,9 @@
     "immintrin.h": "c",
     "*.tcc": "c",
     "perf_counters.h": "c",
-    "time.h": "c"
+    "time.h": "c",
+    "thread": "c",
+    "no_partitioning_join.h": "c"
   },
   "C/C++ Include Guard.Comment Style": "Block",
   "C/C++ Include Guard.Auto Update Include Guard": false,
