@@ -293,8 +293,8 @@ group_by_hashtable(hashtable_t *ht, relation_t *rel,void *output)
     }
 
     // 统计开始
-    // m5_checkpoint(0, 0);
-    // m5_reset_stats(0, 0);
+    m5_checkpoint(0, 0);
+    m5_reset_stats(0, 0);
 
     // Step 2: 遍历relation的每个tuple，按key进行分组计数
     for (i = 0; i < rel->num_tuples; i++) {
@@ -347,7 +347,7 @@ group_by_hashtable(hashtable_t *ht, relation_t *rel,void *output)
     }
 
     // 统计结束
-    // m5_dump_stats(0, 0);
+    m5_dump_stats(0, 0);
     // printf("%ld\n",group_count);
     return group_count; // 返回总分组数
 }
@@ -384,7 +384,7 @@ probe_hashtable(hashtable_t *ht, relation_t *rel, void * output)
         //     index[cnt++]=idx[i];
         // }
     }
-    // m5_checkpoint(0,0);
+    m5_checkpoint(0,0);
     m5_reset_stats(0,0);
     for (i = 0; i < rel->num_tuples; i++)
     // for (i = 0; i < cnt; i++)

@@ -1,0 +1,1765 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/luoqiang/xymc/hashjoin'
+CDPATH="${ZSH_VERSION+.}:" && cd . && aclocal-1.16 
+ 
+ cd . && automake-1.16 --foreign
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.  For more info, see:
+configure.ac:6: https://www.gnu.org/software/automake/manual/automake.html#Modernize-AM_005fINIT_005fAUTOMAKE-invocation
+
+CDPATH="${ZSH_VERSION+.}:" && cd . && autoconf
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.
+./lib/autoconf/general.m4:2434: AC_DIAGNOSE is expanded from...
+aclocal.m4:429: AM_INIT_AUTOMAKE is expanded from...
+configure.ac:6: the top level
+
+/bin/bash ./config.status --recheck
+ 
+running CONFIG_SHELL=/bin/bash /bin/bash ./configure --host=aarch64-linux-gnu host_alias=aarch64-linux-gnu CC=aarch64-linux-gnu-gcc --no-create --no-recursion
+ 
+checking for a BSD-compatible install...  
+/usr/bin/install -c
+ 
+checking whether build environment is sane...  
+yes
+ 
+/home/luoqiang/xymc/hashjoin/missing: Unknown `--is-lightweight' option
+Try `/home/luoqiang/xymc/hashjoin/missing --help' for more information
+
+configure: WARNING: 'missing' script is too old or missing
+
+checking for aarch64-linux-gnu-strip...  
+aarch64-linux-gnu-strip
+ 
+checking for a race-free mkdir -p...  
+/usr/bin/mkdir -p
+ 
+checking for gawk...  
+gawk
+ 
+checking whether make sets $(MAKE)...  
+yes
+ 
+checking whether make supports nested variables...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc...  
+aarch64-linux-gnu-gcc
+ 
+checking whether the C compiler works...  
+yes
+ 
+checking for C compiler default output file name... a.out
+ 
+checking for suffix of executables...  
+
+ 
+checking whether we are cross compiling...  
+yes
+ 
+checking for suffix of object files...  
+o
+checking whether the compiler supports GNU C... yes
+checking whether aarch64-linux-gnu-gcc accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc option to enable C11 features...  
+none needed
+ 
+checking whether aarch64-linux-gnu-gcc understands -c and -o together...  
+yes
+ 
+checking whether make supports the include directive...  
+yes (GNU style)
+ 
+checking dependency style of aarch64-linux-gnu-gcc...  
+gcc3
+ 
+checking for aarch64-linux-gnu-g++...  
+aarch64-linux-gnu-g++
+ 
+checking whether the compiler supports GNU C++...  
+yes
+ 
+checking whether aarch64-linux-gnu-g++ accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-g++ option to enable C++11 features...  
+none needed
+ 
+checking dependency style of aarch64-linux-gnu-g++...  
+gcc3
+ 
+checking whether make sets $(MAKE)...  
+(cached)  
+yes
+ 
+checking for stdio.h...  
+yes
+ 
+checking for stdlib.h...  
+yes
+ 
+checking for string.h...  
+yes
+ 
+checking for inttypes.h...  
+yes
+ 
+checking for stdint.h...  
+yes
+ 
+checking for strings.h...  
+yes
+ 
+checking for sys/stat.h...  
+yes
+ 
+checking for sys/types.h...  
+yes
+ 
+checking for unistd.h...  
+yes
+ 
+checking for stdint.h...  
+(cached)  
+yes
+ 
+checking for stdlib.h...  
+(cached)  
+yes
+ 
+checking for string.h...  
+(cached)  
+yes
+ 
+checking for sys/time.h...  
+yes
+ 
+checking for unistd.h... (cached) yes
+checking for inline...  
+inline
+ 
+checking for int32_t...  
+yes
+ 
+checking for int64_t...  
+yes
+ 
+checking for C/C++ restrict keyword...  
+__restrict__
+ 
+checking for uint32_t...  
+yes
+ 
+checking for uint64_t...  
+yes
+ 
+checking for pow in -lm...  
+yes
+ 
+checking for pthread_mutex_init in -lpthread...  
+yes
+ 
+checking for error_at_line...  
+yes
+ 
+checking build system type...  
+x86_64-pc-linux-gnu
+ 
+checking host system type...  
+aarch64-unknown-linux-gnu
+ 
+checking for GNU libc compatible malloc...  
+yes
+ 
+checking for gettimeofday...  
+yes
+ 
+checking for memset...  
+yes
+ 
+checking for pow...  
+yes
+ 
+checking for pthread_attr_setaffinity_np...  
+yes
+ 
+checking for pthread_barrier_wait...  
+yes
+ 
+checking that generated files are newer than configure...  
+done
+ 
+configure: creating ./config.status
+ 
+ /bin/bash ./config.status
+ 
+config.status: creating Makefile
+ 
+config.status: creating src/Makefile
+ 
+config.status: creating config.h
+ 
+config.status: config.h is unchanged
+ 
+config.status: executing depfiles commands
+ 
+(CDPATH="${ZSH_VERSION+.}:" && cd . && autoheader)
+rm -f stamp-h1
+touch config.h.in
+rm -f stamp-h1
+cd . && /bin/bash ./config.status config.h
+test -f config.h || rm -f stamp-h1
+test -f config.h || make  stamp-h1
+ 
+make  all-recursive
+ 
+make[1]: Entering directory '/home/luoqiang/xymc/hashjoin'
+CDPATH="${ZSH_VERSION+.}:" && cd . && aclocal-1.16 
+ 
+ cd . && automake-1.16 --foreign
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.  For more info, see:
+configure.ac:6: https://www.gnu.org/software/automake/manual/automake.html#Modernize-AM_005fINIT_005fAUTOMAKE-invocation
+
+CDPATH="${ZSH_VERSION+.}:" && cd . && autoconf
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.
+./lib/autoconf/general.m4:2434: AC_DIAGNOSE is expanded from...
+aclocal.m4:429: AM_INIT_AUTOMAKE is expanded from...
+configure.ac:6: the top level
+
+/bin/bash ./config.status --recheck
+ 
+running CONFIG_SHELL=/bin/bash /bin/bash ./configure --host=aarch64-linux-gnu host_alias=aarch64-linux-gnu CC=aarch64-linux-gnu-gcc --no-create --no-recursion
+ 
+checking for a BSD-compatible install...  
+/usr/bin/install -c
+ 
+checking whether build environment is sane...  
+yes
+ 
+/home/luoqiang/xymc/hashjoin/missing: Unknown `--is-lightweight' option
+Try `/home/luoqiang/xymc/hashjoin/missing --help' for more information
+
+configure: WARNING: 'missing' script is too old or missing
+
+checking for aarch64-linux-gnu-strip...  
+aarch64-linux-gnu-strip
+ 
+checking for a race-free mkdir -p...  
+/usr/bin/mkdir -p
+ 
+checking for gawk...  
+gawk
+ 
+checking whether make sets $(MAKE)...  
+yes
+ 
+checking whether make supports nested variables...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc...  
+aarch64-linux-gnu-gcc
+ 
+checking whether the C compiler works...  
+yes
+ 
+checking for C compiler default output file name... a.out
+ 
+checking for suffix of executables...  
+
+ 
+checking whether we are cross compiling...  
+yes
+ 
+checking for suffix of object files...  
+o
+ 
+checking whether the compiler supports GNU C...  
+yes
+ 
+checking whether aarch64-linux-gnu-gcc accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc option to enable C11 features...  
+none needed
+ 
+checking whether aarch64-linux-gnu-gcc understands -c and -o together...  
+yes
+ 
+checking whether make supports the include directive...  
+yes (GNU style)
+checking dependency style of aarch64-linux-gnu-gcc...  
+gcc3
+ 
+checking for aarch64-linux-gnu-g++...  
+aarch64-linux-gnu-g++
+ 
+checking whether the compiler supports GNU C++...  
+yes
+ 
+checking whether aarch64-linux-gnu-g++ accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-g++ option to enable C++11 features...  
+none needed
+ 
+checking dependency style of aarch64-linux-gnu-g++...  
+gcc3
+ 
+checking whether make sets $(MAKE)...  
+(cached)  
+yes
+ 
+checking for stdio.h...  
+yes
+ 
+checking for stdlib.h...  
+yes
+ 
+checking for string.h...  
+yes
+ 
+checking for inttypes.h...  
+yes
+ 
+checking for stdint.h...  
+yes
+ 
+checking for strings.h...  
+yes
+ 
+checking for sys/stat.h...  
+yes
+ 
+checking for sys/types.h...  
+yes
+ 
+checking for unistd.h...  
+yes
+ 
+checking for stdint.h...  
+(cached) yes
+ 
+checking for stdlib.h...  
+(cached) yes
+ 
+checking for string.h...  
+(cached) yes
+ 
+checking for sys/time.h...  
+yes
+ 
+checking for unistd.h...  
+(cached)  
+yes
+ 
+checking for inline...  
+inline
+ 
+checking for int32_t...  
+yes
+ 
+checking for int64_t...  
+yes
+ 
+checking for C/C++ restrict keyword...  
+__restrict__
+ 
+checking for uint32_t...  
+yes
+ 
+checking for uint64_t...  
+yes
+ 
+checking for pow in -lm...  
+yes
+ 
+checking for pthread_mutex_init in -lpthread...  
+yes
+ 
+checking for error_at_line...  
+yes
+ 
+checking build system type...  
+x86_64-pc-linux-gnu
+ 
+checking host system type...  
+aarch64-unknown-linux-gnu
+ 
+checking for GNU libc compatible malloc...  
+yes
+ 
+checking for gettimeofday...  
+yes
+ 
+checking for memset...  
+yes
+ 
+checking for pow...  
+yes
+ 
+checking for pthread_attr_setaffinity_np...  
+yes
+ 
+checking for pthread_barrier_wait...  
+yes
+ 
+checking that generated files are newer than configure...  
+done
+ 
+configure: creating ./config.status
+ 
+ /bin/bash ./config.status
+ 
+config.status: creating Makefile
+ 
+config.status: creating src/Makefile
+ 
+config.status: creating config.h
+ 
+config.status: config.h is unchanged
+ 
+config.status: executing depfiles commands
+ 
+fail=; \
+if (target_option=k; case ${target_option-} in ?) ;; *) echo "am__make_running_with_option: internal error: invalid" "target option '${target_option-}' specified" >&2; exit 1;; esac; has_opt=no; sane_makeflags=$MAKEFLAGS; if { if test -z '1'; then false; elif test -n 'x86_64-pc-linux-gnu'; then true; elif test -n '4.3' && test -n '/home/luoqiang/xymc/hashjoin'; then true; else false; fi; }; then sane_makeflags=$MFLAGS; else case $MAKEFLAGS in *\\[\ \	]*) bs=\\; sane_makeflags=`printf '%s\n' "$MAKEFLAGS" | sed "s/$bs$bs[$bs $bs	]*//g"`;; esac; fi; skip_next=no; strip_trailopt () { flg=`printf '%s\n' "$flg" | sed "s/$1.*$//"`; }; for flg in $sane_makeflags; do test $skip_next = yes && { skip_next=no; continue; }; case $flg in *=*|--*) continue;; -*I) strip_trailopt 'I'; skip_next=yes;; -*I?*) strip_trailopt 'I';; -*O) strip_trailopt 'O'; skip_next=yes;; -*O?*) strip_trailopt 'O';; -*l) strip_trailopt 'l'; skip_next=yes;; -*l?*) strip_trailopt 'l';; -[dEDm]) skip_next=yes;; -[JT]) skip_next=yes;; esac; case $flg in *$target_option*) has_opt=yes; break;; esac; done; test $has_opt = yes); then \
+  failcom='fail=yes'; \
+else \
+  failcom='exit 1'; \
+fi; \
+dot_seen=no; \
+target=`echo all-recursive | sed s/-recursive//`; \
+case "all-recursive" in \
+  distclean-* | maintainer-clean-*) list='lib/intel-pcm-1.7 src' ;; \
+  *) list=' src' ;; \
+esac; \
+for subdir in $list; do \
+  echo "Making $target in $subdir"; \
+  if test "$subdir" = "."; then \
+    dot_seen=yes; \
+    local_target="$target-am"; \
+  else \
+    local_target="$target"; \
+  fi; \
+  (CDPATH="${ZSH_VERSION+.}:" && cd $subdir && make  $local_target) \
+  || eval $failcom; \
+done; \
+if test "$dot_seen" = "no"; then \
+ 
+  make  "$target-am" || exit 1; \
+fi; test -z "$fail"
+ 
+Making all in src
+ 
+make[2]: Entering directory '/home/luoqiang/xymc/hashjoin/src'
+ 
+cd .. && make  am--refresh
+ 
+make[3]: Entering directory '/home/luoqiang/xymc/hashjoin'
+CDPATH="${ZSH_VERSION+.}:" && cd . && aclocal-1.16 
+ 
+ cd . && automake-1.16 --foreign
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.  For more info, see:
+configure.ac:6: https://www.gnu.org/software/automake/manual/automake.html#Modernize-AM_005fINIT_005fAUTOMAKE-invocation
+
+CDPATH="${ZSH_VERSION+.}:" && cd . && autoconf
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.
+./lib/autoconf/general.m4:2434: AC_DIAGNOSE is expanded from...
+aclocal.m4:429: AM_INIT_AUTOMAKE is expanded from...
+configure.ac:6: the top level
+
+/bin/bash ./config.status --recheck
+ 
+running CONFIG_SHELL=/bin/bash /bin/bash ./configure --host=aarch64-linux-gnu host_alias=aarch64-linux-gnu CC=aarch64-linux-gnu-gcc --no-create --no-recursion
+ 
+checking for a BSD-compatible install...  
+/usr/bin/install -c
+ 
+checking whether build environment is sane...  
+yes
+ 
+/home/luoqiang/xymc/hashjoin/missing: Unknown `--is-lightweight' option
+Try `/home/luoqiang/xymc/hashjoin/missing --help' for more information
+configure: WARNING: 'missing' script is too old or missing
+
+checking for aarch64-linux-gnu-strip... aarch64-linux-gnu-strip
+checking for a race-free mkdir -p...  
+/usr/bin/mkdir -p
+ 
+checking for gawk...  
+gawk
+ 
+checking whether make sets $(MAKE)...  
+yes
+ 
+checking whether make supports nested variables...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc...  
+aarch64-linux-gnu-gcc
+ 
+checking whether the C compiler works...  
+yes
+ 
+checking for C compiler default output file name... a.out
+ 
+checking for suffix of executables...  
+
+ 
+checking whether we are cross compiling...  
+yes
+ 
+checking for suffix of object files...  
+o
+ 
+checking whether the compiler supports GNU C...  
+yes
+ 
+checking whether aarch64-linux-gnu-gcc accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc option to enable C11 features...  
+none needed
+ 
+checking whether aarch64-linux-gnu-gcc understands -c and -o together...  
+yes
+ 
+checking whether make supports the include directive...  
+yes (GNU style)
+ 
+checking dependency style of aarch64-linux-gnu-gcc...  
+gcc3
+ 
+checking for aarch64-linux-gnu-g++...  
+aarch64-linux-gnu-g++
+ 
+checking whether the compiler supports GNU C++...  
+yes
+ 
+checking whether aarch64-linux-gnu-g++ accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-g++ option to enable C++11 features...  
+none needed
+ 
+checking dependency style of aarch64-linux-gnu-g++...  
+gcc3
+ 
+checking whether make sets $(MAKE)...  
+(cached)  
+yes
+ 
+checking for stdio.h...  
+yes
+ 
+checking for stdlib.h...  
+yes
+ 
+checking for string.h...  
+yes
+ 
+checking for inttypes.h...  
+yes
+ 
+checking for stdint.h...  
+yes
+ 
+checking for strings.h...  
+yes
+checking for sys/stat.h...  
+yes
+ 
+checking for sys/types.h...  
+yes
+ 
+checking for unistd.h...  
+yes
+ 
+checking for stdint.h...  
+(cached)  
+yes
+ 
+checking for stdlib.h...  
+(cached)  
+yes
+ 
+checking for string.h...  
+(cached)  
+yes
+ 
+checking for sys/time.h...  
+yes
+ 
+checking for unistd.h...  
+(cached) yes
+ 
+checking for inline...  
+inline
+ 
+checking for int32_t...  
+yes
+ 
+checking for int64_t...  
+yes
+ 
+checking for C/C++ restrict keyword...  
+__restrict__
+ 
+checking for uint32_t...  
+yes
+ 
+checking for uint64_t...  
+yes
+ 
+checking for pow in -lm...  
+yes
+ 
+checking for pthread_mutex_init in -lpthread...  
+yes
+ 
+checking for error_at_line...  
+yes
+ 
+checking build system type...  
+x86_64-pc-linux-gnu
+ 
+checking host system type...  
+aarch64-unknown-linux-gnu
+ 
+checking for GNU libc compatible malloc...  
+yes
+ 
+checking for gettimeofday...  
+yes
+ 
+checking for memset...  
+yes
+ 
+checking for pow...  
+yes
+ 
+checking for pthread_attr_setaffinity_np...  
+yes
+ 
+checking for pthread_barrier_wait...  
+yes
+ 
+checking that generated files are newer than configure...  
+done
+ 
+configure: creating ./config.status
+ 
+ /bin/bash ./config.status
+ 
+config.status: creating Makefile
+ 
+config.status: creating src/Makefile
+ 
+config.status: creating config.h
+ 
+config.status: config.h is unchanged
+ 
+config.status: executing depfiles commands
+ 
+make[3]: Leaving directory '/home/luoqiang/xymc/hashjoin'
+ 
+make[3]: Entering directory '/home/luoqiang/xymc/hashjoin'
+CDPATH="${ZSH_VERSION+.}:" && cd . && aclocal-1.16 
+ 
+ cd . && automake-1.16 --foreign
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.  For more info, see:
+configure.ac:6: https://www.gnu.org/software/automake/manual/automake.html#Modernize-AM_005fINIT_005fAUTOMAKE-invocation
+
+CDPATH="${ZSH_VERSION+.}:" && cd . && autoconf
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.
+./lib/autoconf/general.m4:2434: AC_DIAGNOSE is expanded from...
+aclocal.m4:429: AM_INIT_AUTOMAKE is expanded from...
+configure.ac:6: the top level
+
+/bin/bash ./config.status --recheck
+ 
+running CONFIG_SHELL=/bin/bash /bin/bash ./configure --host=aarch64-linux-gnu host_alias=aarch64-linux-gnu CC=aarch64-linux-gnu-gcc --no-create --no-recursion
+ 
+checking for a BSD-compatible install...  
+/usr/bin/install -c
+ 
+checking whether build environment is sane...  
+yes
+ 
+/home/luoqiang/xymc/hashjoin/missing: Unknown `--is-lightweight' option
+
+Try `/home/luoqiang/xymc/hashjoin/missing --help' for more information
+
+configure: WARNING: 'missing' script is too old or missing
+
+checking for aarch64-linux-gnu-strip...  
+aarch64-linux-gnu-strip
+ 
+checking for a race-free mkdir -p...  
+/usr/bin/mkdir -p
+ 
+checking for gawk...  
+gawk
+ 
+checking whether make sets $(MAKE)...  
+yes
+ 
+checking whether make supports nested variables...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc...  
+aarch64-linux-gnu-gcc
+ 
+checking whether the C compiler works...  
+yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables...  
+
+ 
+checking whether we are cross compiling...  
+yes
+ 
+checking for suffix of object files...  
+o
+checking whether the compiler supports GNU C...  
+yes
+ 
+checking whether aarch64-linux-gnu-gcc accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc option to enable C11 features...  
+none needed
+ 
+checking whether aarch64-linux-gnu-gcc understands -c and -o together...  
+yes
+ 
+checking whether make supports the include directive...  
+yes (GNU style)
+ 
+checking dependency style of aarch64-linux-gnu-gcc...  
+gcc3
+ 
+checking for aarch64-linux-gnu-g++...  
+aarch64-linux-gnu-g++
+ 
+checking whether the compiler supports GNU C++...  
+yes
+ 
+checking whether aarch64-linux-gnu-g++ accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-g++ option to enable C++11 features...  
+none needed
+ 
+checking dependency style of aarch64-linux-gnu-g++...  
+gcc3
+ 
+checking whether make sets $(MAKE)...  
+(cached)  
+yes
+checking for stdio.h...  
+yes
+ 
+checking for stdlib.h...  
+yes
+ 
+checking for string.h...  
+yes
+ 
+checking for inttypes.h...  
+yes
+ 
+checking for stdint.h...  
+yes
+ 
+checking for strings.h...  
+yes
+ 
+checking for sys/stat.h...  
+yes
+ 
+checking for sys/types.h...  
+yes
+ 
+checking for unistd.h...  
+yes
+ 
+checking for stdint.h...  
+(cached)  
+yes
+ 
+checking for stdlib.h...  
+(cached)  
+yes
+ 
+checking for string.h...  
+(cached)  
+yes
+ 
+checking for sys/time.h...  
+yes
+ 
+checking for unistd.h...  
+(cached)  
+yes
+ 
+checking for inline...  
+inline
+ 
+checking for int32_t...  
+yes
+ 
+checking for int64_t...  
+yes
+ 
+checking for C/C++ restrict keyword...  
+__restrict__
+ 
+checking for uint32_t...  
+yes
+ 
+checking for uint64_t...  
+yes
+checking for pow in -lm...  
+yes
+ 
+checking for pthread_mutex_init in -lpthread...  
+yes
+ 
+checking for error_at_line...  
+yes
+ 
+checking build system type...  
+x86_64-pc-linux-gnu
+ 
+checking host system type...  
+aarch64-unknown-linux-gnu
+ 
+checking for GNU libc compatible malloc...  
+yes
+ 
+checking for gettimeofday...  
+yes
+ 
+checking for memset...  
+yes
+ 
+checking for pow...  
+yes
+ 
+checking for pthread_attr_setaffinity_np...  
+yes
+ 
+checking for pthread_barrier_wait...  
+yes
+ 
+checking that generated files are newer than configure...  
+done
+ 
+configure: creating ./config.status
+ 
+ /bin/bash ./config.status
+ 
+config.status: creating Makefile
+ 
+config.status: creating src/Makefile
+ 
+config.status: creating config.h
+ 
+config.status: config.h is unchanged
+ 
+config.status: executing depfiles commands
+ 
+make[3]: Leaving directory '/home/luoqiang/xymc/hashjoin'
+ 
+cd .. && make  am--refresh
+ 
+make[3]: Entering directory '/home/luoqiang/xymc/hashjoin'
+CDPATH="${ZSH_VERSION+.}:" && cd . && aclocal-1.16 
+ 
+ cd . && automake-1.16 --foreign
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.  For more info, see:
+configure.ac:6: https://www.gnu.org/software/automake/manual/automake.html#Modernize-AM_005fINIT_005fAUTOMAKE-invocation
+
+CDPATH="${ZSH_VERSION+.}:" && cd . && autoconf
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.
+./lib/autoconf/general.m4:2434: AC_DIAGNOSE is expanded from...
+aclocal.m4:429: AM_INIT_AUTOMAKE is expanded from...
+configure.ac:6: the top level
+
+/bin/bash ./config.status --recheck
+ 
+running CONFIG_SHELL=/bin/bash /bin/bash ./configure --host=aarch64-linux-gnu host_alias=aarch64-linux-gnu CC=aarch64-linux-gnu-gcc --no-create --no-recursion
+ 
+checking for a BSD-compatible install...  
+/usr/bin/install -c
+ 
+checking whether build environment is sane...  
+yes
+ 
+/home/luoqiang/xymc/hashjoin/missing: Unknown `--is-lightweight' option
+Try `/home/luoqiang/xymc/hashjoin/missing --help' for more information
+
+configure: WARNING: 'missing' script is too old or missing
+
+checking for aarch64-linux-gnu-strip...  
+aarch64-linux-gnu-strip
+ 
+checking for a race-free mkdir -p...  
+/usr/bin/mkdir -p
+ 
+checking for gawk...  
+gawk
+ 
+checking whether make sets $(MAKE)...  
+yes
+ 
+checking whether make supports nested variables...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc...  
+aarch64-linux-gnu-gcc
+ 
+checking whether the C compiler works...  
+yes
+ 
+checking for C compiler default output file name... a.out
+ 
+checking for suffix of executables...  
+
+ 
+checking whether we are cross compiling...  
+yes
+ 
+checking for suffix of object files...  
+o
+ 
+checking whether the compiler supports GNU C...  
+yes
+ 
+checking whether aarch64-linux-gnu-gcc accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc option to enable C11 features...  
+none needed
+ 
+checking whether aarch64-linux-gnu-gcc understands -c and -o together...  
+yes
+ 
+checking whether make supports the include directive...  
+yes (GNU style)
+ 
+checking dependency style of aarch64-linux-gnu-gcc...  
+gcc3
+ 
+checking for aarch64-linux-gnu-g++...  
+aarch64-linux-gnu-g++
+ 
+checking whether the compiler supports GNU C++...  
+yes
+ 
+checking whether aarch64-linux-gnu-g++ accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-g++ option to enable C++11 features...  
+none needed
+ 
+checking dependency style of aarch64-linux-gnu-g++...  
+gcc3
+checking whether make sets $(MAKE)...  
+(cached) yes
+checking for stdio.h...  
+yes
+ 
+checking for stdlib.h...  
+yes
+ 
+checking for string.h...  
+yes
+ 
+checking for inttypes.h...  
+yes
+ 
+checking for stdint.h...  
+yes
+ 
+checking for strings.h...  
+yes
+ 
+checking for sys/stat.h...  
+yes
+ 
+checking for sys/types.h...  
+yes
+ 
+checking for unistd.h...  
+yes
+ 
+checking for stdint.h...  
+(cached)  
+yes
+ 
+checking for stdlib.h...  
+(cached)  
+yes
+ 
+checking for string.h...  
+(cached)  
+yes
+ 
+checking for sys/time.h...  
+yes
+ 
+checking for unistd.h...  
+(cached)  
+yes
+ 
+checking for inline...  
+inline
+ 
+checking for int32_t...  
+yes
+ 
+checking for int64_t...  
+yes
+ 
+checking for C/C++ restrict keyword...  
+__restrict__
+ 
+checking for uint32_t...  
+yes
+ 
+checking for uint64_t...  
+yes
+ 
+checking for pow in -lm...  
+yes
+ 
+checking for pthread_mutex_init in -lpthread...  
+yes
+ 
+checking for error_at_line...  
+yes
+ 
+checking build system type...  
+x86_64-pc-linux-gnu
+ 
+checking host system type...  
+aarch64-unknown-linux-gnu
+ 
+checking for GNU libc compatible malloc...  
+yes
+ 
+checking for gettimeofday...  
+yes
+ 
+checking for memset...  
+yes
+checking for pow...  
+yes
+ 
+checking for pthread_attr_setaffinity_np...  
+yes
+ 
+checking for pthread_barrier_wait...  
+yes
+ 
+checking that generated files are newer than configure...  
+done
+ 
+configure: creating ./config.status
+ 
+ /bin/bash ./config.status
+ 
+config.status: creating Makefile
+ 
+config.status: creating src/Makefile
+ 
+config.status: creating config.h
+ 
+config.status: config.h is unchanged
+ 
+config.status: executing depfiles commands
+ 
+make[3]: Leaving directory '/home/luoqiang/xymc/hashjoin'
+ 
+cd .. && make  am--refresh
+ 
+make[3]: Entering directory '/home/luoqiang/xymc/hashjoin'
+CDPATH="${ZSH_VERSION+.}:" && cd . && aclocal-1.16 
+ 
+ cd . && automake-1.16 --foreign
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.  For more info, see:
+configure.ac:6: https://www.gnu.org/software/automake/manual/automake.html#Modernize-AM_005fINIT_005fAUTOMAKE-invocation
+
+CDPATH="${ZSH_VERSION+.}:" && cd . && autoconf
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.
+./lib/autoconf/general.m4:2434: AC_DIAGNOSE is expanded from...
+aclocal.m4:429: AM_INIT_AUTOMAKE is expanded from...
+configure.ac:6: the top level
+
+/bin/bash ./config.status --recheck
+ 
+running CONFIG_SHELL=/bin/bash /bin/bash ./configure --host=aarch64-linux-gnu host_alias=aarch64-linux-gnu CC=aarch64-linux-gnu-gcc --no-create --no-recursion
+ 
+checking for a BSD-compatible install...  
+/usr/bin/install -c
+ 
+checking whether build environment is sane...  
+yes
+ 
+/home/luoqiang/xymc/hashjoin/missing: Unknown `--is-lightweight' option
+Try `/home/luoqiang/xymc/hashjoin/missing --help' for more information
+
+configure: WARNING: 'missing' script is too old or missing
+
+checking for aarch64-linux-gnu-strip...  
+aarch64-linux-gnu-strip
+ 
+checking for a race-free mkdir -p...  
+/usr/bin/mkdir -p
+ 
+checking for gawk...  
+gawk
+ 
+checking whether make sets $(MAKE)...  
+yes
+ 
+checking whether make supports nested variables...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc...  
+aarch64-linux-gnu-gcc
+ 
+checking whether the C compiler works...  
+yes
+ 
+checking for C compiler default output file name... a.out
+ 
+checking for suffix of executables...  
+
+ 
+checking whether we are cross compiling...  
+yes
+ 
+checking for suffix of object files...  
+o
+ 
+checking whether the compiler supports GNU C...  
+yes
+ 
+checking whether aarch64-linux-gnu-gcc accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc option to enable C11 features...  
+none needed
+ 
+checking whether aarch64-linux-gnu-gcc understands -c and -o together...  
+yes
+ 
+checking whether make supports the include directive...  
+yes (GNU style)
+ 
+checking dependency style of aarch64-linux-gnu-gcc...  
+gcc3
+ 
+checking for aarch64-linux-gnu-g++...  
+aarch64-linux-gnu-g++
+ 
+checking whether the compiler supports GNU C++...  
+yes
+ 
+checking whether aarch64-linux-gnu-g++ accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-g++ option to enable C++11 features...  
+none needed
+ 
+checking dependency style of aarch64-linux-gnu-g++...  
+gcc3
+ 
+checking whether make sets $(MAKE)...  
+(cached)  
+yes
+ 
+checking for stdio.h...  
+yes
+ 
+checking for stdlib.h...  
+yes
+ 
+checking for string.h...  
+yes
+ 
+checking for inttypes.h...  
+yes
+ 
+checking for stdint.h...  
+yes
+ 
+checking for strings.h...  
+yes
+ 
+checking for sys/stat.h...  
+yes
+ 
+checking for sys/types.h...  
+yes
+ 
+checking for unistd.h...  
+yes
+ 
+checking for stdint.h...  
+(cached)  
+yes
+ 
+checking for stdlib.h...  
+(cached)  
+yes
+ 
+checking for string.h...  
+(cached)  
+yes
+ 
+checking for sys/time.h...  
+yes
+ 
+checking for unistd.h...  
+(cached)  
+yes
+ 
+checking for inline...  
+inline
+ 
+checking for int32_t...  
+yes
+ 
+checking for int64_t...  
+yes
+checking for C/C++ restrict keyword...  
+__restrict__
+ 
+checking for uint32_t...  
+yes
+ 
+checking for uint64_t...  
+yes
+ 
+checking for pow in -lm...  
+yes
+ 
+checking for pthread_mutex_init in -lpthread...  
+yes
+ 
+checking for error_at_line...  
+yes
+ 
+checking build system type...  
+x86_64-pc-linux-gnu
+ 
+checking host system type...  
+aarch64-unknown-linux-gnu
+ 
+checking for GNU libc compatible malloc...  
+yes
+ 
+checking for gettimeofday...  
+yes
+ 
+checking for memset...  
+yes
+ 
+checking for pow...  
+yes
+ 
+checking for pthread_attr_setaffinity_np...  
+yes
+ 
+checking for pthread_barrier_wait...  
+yes
+ 
+checking that generated files are newer than configure...  
+done
+ 
+configure: creating ./config.status
+ 
+ /bin/bash ./config.status
+ 
+config.status: creating Makefile
+ 
+config.status: creating src/Makefile
+ 
+config.status: creating config.h
+ 
+config.status: config.h is unchanged
+ 
+config.status: executing depfiles commands
+ 
+make[3]: Leaving directory '/home/luoqiang/xymc/hashjoin'
+ 
+make[3]: Entering directory '/home/luoqiang/xymc/hashjoin'
+CDPATH="${ZSH_VERSION+.}:" && cd . && aclocal-1.16 
+ 
+ cd . && automake-1.16 --foreign
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.  For more info, see:
+configure.ac:6: https://www.gnu.org/software/automake/manual/automake.html#Modernize-AM_005fINIT_005fAUTOMAKE-invocation
+
+CDPATH="${ZSH_VERSION+.}:" && cd . && autoconf
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.
+./lib/autoconf/general.m4:2434: AC_DIAGNOSE is expanded from...
+aclocal.m4:429: AM_INIT_AUTOMAKE is expanded from...
+configure.ac:6: the top level
+
+/bin/bash ./config.status --recheck
+ 
+running CONFIG_SHELL=/bin/bash /bin/bash ./configure --host=aarch64-linux-gnu host_alias=aarch64-linux-gnu CC=aarch64-linux-gnu-gcc --no-create --no-recursion
+ 
+checking for a BSD-compatible install...  
+/usr/bin/install -c
+ 
+checking whether build environment is sane...  
+yes
+ 
+/home/luoqiang/xymc/hashjoin/missing: Unknown `--is-lightweight' option
+Try `/home/luoqiang/xymc/hashjoin/missing --help' for more information
+
+configure: WARNING: 'missing' script is too old or missing
+
+checking for aarch64-linux-gnu-strip...  
+aarch64-linux-gnu-strip
+ 
+checking for a race-free mkdir -p...  
+/usr/bin/mkdir -p
+ 
+checking for gawk...  
+gawk
+ 
+checking whether make sets $(MAKE)...  
+yes
+ 
+checking whether make supports nested variables...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc...  
+aarch64-linux-gnu-gcc
+ 
+checking whether the C compiler works...  
+yes
+ 
+checking for C compiler default output file name... a.out
+ 
+checking for suffix of executables...  
+
+ 
+checking whether we are cross compiling...  
+yes
+ 
+checking for suffix of object files...  
+o
+ 
+checking whether the compiler supports GNU C...  
+yes
+ 
+checking whether aarch64-linux-gnu-gcc accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc option to enable C11 features...  
+none needed
+ 
+checking whether aarch64-linux-gnu-gcc understands -c and -o together...  
+yes
+ 
+checking whether make supports the include directive...  
+yes (GNU style)
+ 
+checking dependency style of aarch64-linux-gnu-gcc...  
+gcc3
+ 
+checking for aarch64-linux-gnu-g++...  
+aarch64-linux-gnu-g++
+ 
+checking whether the compiler supports GNU C++...  
+yes
+ 
+checking whether aarch64-linux-gnu-g++ accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-g++ option to enable C++11 features...  
+none needed
+ 
+checking dependency style of aarch64-linux-gnu-g++...  
+gcc3
+ 
+checking whether make sets $(MAKE)...  
+(cached)  
+yes
+ 
+checking for stdio.h...  
+yes
+ 
+checking for stdlib.h...  
+yes
+ 
+checking for string.h...  
+yes
+ 
+checking for inttypes.h...  
+yes
+ 
+checking for stdint.h...  
+yes
+ 
+checking for strings.h...  
+yes
+ 
+checking for sys/stat.h...  
+yes
+ 
+checking for sys/types.h...  
+yes
+ 
+checking for unistd.h...  
+yes
+ 
+checking for stdint.h...  
+(cached)  
+yes
+ 
+checking for stdlib.h...  
+(cached)  
+yes
+ 
+checking for string.h...  
+(cached)  
+yes
+ 
+checking for sys/time.h...  
+yes
+ 
+checking for unistd.h...  
+(cached)  
+yes
+ 
+checking for inline...  
+inline
+checking for int32_t...  
+yes
+ 
+checking for int64_t...  
+yes
+ 
+checking for C/C++ restrict keyword...  
+__restrict__
+ 
+checking for uint32_t...  
+yes
+ 
+checking for uint64_t...  
+yes
+ 
+checking for pow in -lm...  
+yes
+ 
+checking for pthread_mutex_init in -lpthread...  
+yes
+ 
+checking for error_at_line...  
+yes
+ 
+checking build system type...  
+x86_64-pc-linux-gnu
+ 
+checking host system type...  
+aarch64-unknown-linux-gnu
+ 
+checking for GNU libc compatible malloc...  
+yes
+ 
+checking for gettimeofday...  
+yes
+ 
+checking for memset...  
+yes
+ 
+checking for pow...  
+yes
+ 
+checking for pthread_attr_setaffinity_np...  
+yes
+ 
+checking for pthread_barrier_wait...  
+yes
+ 
+checking that generated files are newer than configure...  
+done
+ 
+configure: creating ./config.status
+ 
+ /bin/bash ./config.status
+ 
+config.status: creating Makefile
+ 
+config.status: creating src/Makefile
+ 
+config.status: creating config.h
+ 
+config.status: config.h is unchanged
+ 
+config.status: executing depfiles commands
+ 
+make[3]: Leaving directory '/home/luoqiang/xymc/hashjoin'
+ 
+aarch64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..    -Wall -ansi -std=c99 -Wno-format-security -Wno-format  -pedantic -g    -DPADDED_BUCKET=0       -O3 -MT mchashjoins-no_partitioning_join.o -MD -MP -MF .deps/mchashjoins-no_partitioning_join.Tpo -c -o mchashjoins-no_partitioning_join.o `test -f 'no_partitioning_join.c' || echo './'`no_partitioning_join.c
+mv -f .deps/mchashjoins-no_partitioning_join.Tpo .deps/mchashjoins-no_partitioning_join.Po
+ 
+aarch64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..    -Wall -ansi -std=c99 -Wno-format-security -Wno-format  -pedantic -g    -DPADDED_BUCKET=0       -O3 -MT mchashjoins-perf_counters.o -MD -MP -MF .deps/mchashjoins-perf_counters.Tpo -c -o mchashjoins-perf_counters.o `test -f 'perf_counters.c' || echo './'`perf_counters.c
+mv -f .deps/mchashjoins-perf_counters.Tpo .deps/mchashjoins-perf_counters.Po
+aarch64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..    -Wall -ansi -std=c99 -Wno-format-security -Wno-format  -pedantic -g    -DPADDED_BUCKET=0       -O3 -MT mchashjoins-cpu_mapping.o -MD -MP -MF .deps/mchashjoins-cpu_mapping.Tpo -c -o mchashjoins-cpu_mapping.o `test -f 'cpu_mapping.c' || echo './'`cpu_mapping.c
+mv -f .deps/mchashjoins-cpu_mapping.Tpo .deps/mchashjoins-cpu_mapping.Po
+ 
+aarch64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..    -Wall -ansi -std=c99 -Wno-format-security -Wno-format  -pedantic -g    -DPADDED_BUCKET=0       -O3 -MT mchashjoins-genzipf.o -MD -MP -MF .deps/mchashjoins-genzipf.Tpo -c -o mchashjoins-genzipf.o `test -f 'genzipf.c' || echo './'`genzipf.c
+mv -f .deps/mchashjoins-genzipf.Tpo .deps/mchashjoins-genzipf.Po
+ 
+aarch64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..    -Wall -ansi -std=c99 -Wno-format-security -Wno-format  -pedantic -g    -DPADDED_BUCKET=0       -O3 -MT mchashjoins-generator.o -MD -MP -MF .deps/mchashjoins-generator.Tpo -c -o mchashjoins-generator.o `test -f 'generator.c' || echo './'`generator.c
+mv -f .deps/mchashjoins-generator.Tpo .deps/mchashjoins-generator.Po
+ 
+aarch64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..    -Wall -ansi -std=c99 -Wno-format-security -Wno-format  -pedantic -g    -DPADDED_BUCKET=0       -O3 -MT mchashjoins-main.o -MD -MP -MF .deps/mchashjoins-main.Tpo -c -o mchashjoins-main.o `test -f 'main.c' || echo './'`main.c
+mv -f .deps/mchashjoins-main.Tpo .deps/mchashjoins-main.Po
+ 
+rm -f mchashjoins
+aarch64-linux-gnu-gcc -Wall -ansi -std=c99 -Wno-format-security -Wno-format  -pedantic -g    -DPADDED_BUCKET=0       -O3   -pthread -static  -o mchashjoins mchashjoins-no_partitioning_join.o mchashjoins-perf_counters.o mchashjoins-cpu_mapping.o mchashjoins-genzipf.o mchashjoins-generator.o mchashjoins-main.o  -lpthread -lm  
+ 
+make[2]: Leaving directory '/home/luoqiang/xymc/hashjoin/src'
+ 
+make[2]: Entering directory '/home/luoqiang/xymc/hashjoin'
+CDPATH="${ZSH_VERSION+.}:" && cd . && aclocal-1.16 
+ 
+ cd . && automake-1.16 --foreign
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.  For more info, see:
+configure.ac:6: https://www.gnu.org/software/automake/manual/automake.html#Modernize-AM_005fINIT_005fAUTOMAKE-invocation
+
+CDPATH="${ZSH_VERSION+.}:" && cd . && autoconf
+ 
+configure.ac:6: warning: AM_INIT_AUTOMAKE: two- and three-arguments forms are deprecated.
+./lib/autoconf/general.m4:2434: AC_DIAGNOSE is expanded from...
+aclocal.m4:429: AM_INIT_AUTOMAKE is expanded from...
+configure.ac:6: the top level
+
+/bin/bash ./config.status --recheck
+ 
+running CONFIG_SHELL=/bin/bash /bin/bash ./configure --host=aarch64-linux-gnu host_alias=aarch64-linux-gnu CC=aarch64-linux-gnu-gcc --no-create --no-recursion
+ 
+checking for a BSD-compatible install...  
+/usr/bin/install -c
+ 
+checking whether build environment is sane...  
+yes
+checking for aarch64-linux-gnu-strip... aarch64-linux-gnu-strip
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)...  
+/home/luoqiang/xymc/hashjoin/missing: Unknown `--is-lightweight' option
+Try `/home/luoqiang/xymc/hashjoin/missing --help' for more information
+configure: WARNING: 'missing' script is too old or missing
+
+yes
+ 
+checking whether make supports nested variables...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc...  
+aarch64-linux-gnu-gcc
+ 
+checking whether the C compiler works...  
+yes
+ 
+checking for C compiler default output file name... a.out
+ 
+checking for suffix of executables...  
+
+ 
+checking whether we are cross compiling...  
+yes
+ 
+checking for suffix of object files...  
+o
+ 
+checking whether the compiler supports GNU C...  
+yes
+ 
+checking whether aarch64-linux-gnu-gcc accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-gcc option to enable C11 features...  
+none needed
+checking whether aarch64-linux-gnu-gcc understands -c and -o together...  
+yes
+checking whether make supports the include directive...  
+yes (GNU style)
+ 
+checking dependency style of aarch64-linux-gnu-gcc...  
+gcc3
+ 
+checking for aarch64-linux-gnu-g++...  
+aarch64-linux-gnu-g++
+ 
+checking whether the compiler supports GNU C++...  
+yes
+ 
+checking whether aarch64-linux-gnu-g++ accepts -g...  
+yes
+ 
+checking for aarch64-linux-gnu-g++ option to enable C++11 features...  
+none needed
+ 
+checking dependency style of aarch64-linux-gnu-g++...  
+gcc3
+ 
+checking whether make sets $(MAKE)...  
+(cached)  
+yes
+ 
+checking for stdio.h...  
+yes
+ 
+checking for stdlib.h...  
+yes
+ 
+checking for string.h...  
+yes
+ 
+checking for inttypes.h...  
+yes
+ 
+checking for stdint.h...  
+yes
+ 
+checking for strings.h...  
+yes
+ 
+checking for sys/stat.h...  
+yes
+ 
+checking for sys/types.h...  
+yes
+ 
+checking for unistd.h...  
+yes
+ 
+checking for stdint.h...  
+(cached)  
+yes
+ 
+checking for stdlib.h...  
+(cached)  
+yes
+ 
+checking for string.h...  
+(cached)  
+yes
+ 
+checking for sys/time.h...  
+yes
+ 
+checking for unistd.h...  
+(cached)  
+yes
+ 
+checking for inline...  
+inline
+ 
+checking for int32_t...  
+yes
+ 
+checking for int64_t...  
+yes
+ 
+checking for C/C++ restrict keyword...  
+__restrict__
+ 
+checking for uint32_t...  
+yes
+ 
+checking for uint64_t...  
+yes
+ 
+checking for pow in -lm...  
+yes
+ 
+checking for pthread_mutex_init in -lpthread...  
+yes
+ 
+checking for error_at_line...  
+yes
+ 
+checking build system type...  
+x86_64-pc-linux-gnu
+ 
+checking host system type...  
+aarch64-unknown-linux-gnu
+ 
+checking for GNU libc compatible malloc...  
+yes
+ 
+checking for gettimeofday...  
+yes
+ 
+checking for memset...  
+yes
+ 
+checking for pow...  
+yes
+ 
+checking for pthread_attr_setaffinity_np...  
+yes
+ 
+checking for pthread_barrier_wait...  
+yes
+ 
+checking that generated files are newer than configure...  
+done
+ 
+configure: creating ./config.status
+ 
+ /bin/bash ./config.status
+ 
+config.status: creating Makefile
+ 
+config.status: creating src/Makefile
+ 
+config.status: creating config.h
+ 
+config.status: config.h is unchanged
+ 
+config.status: executing depfiles commands
+ 
+(CDPATH="${ZSH_VERSION+.}:" && cd . && autoheader)
+rm -f stamp-h1
+touch config.h.in
+ 
+rm -f stamp-h1
+cd . && /bin/bash ./config.status config.h
+test -f config.h || rm -f stamp-h1
+test -f config.h || make  stamp-h1
+ 
+make[2]: Leaving directory '/home/luoqiang/xymc/hashjoin'
+ 
+make[1]: Leaving directory '/home/luoqiang/xymc/hashjoin'
+ 
+make: Leaving directory '/home/luoqiang/xymc/hashjoin'
+ 
